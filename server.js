@@ -21,9 +21,9 @@ app.use((req,res,next) => {
 app.use(cors());
 app.use(express.json());
 
-let allrouter = require("./backend/routes/allrouter");
+let allRoutes = require("./backend/routes/allRoutes");
 const { json } = require("body-parser");
-app.use("/api",allrouter)
+app.use("/api",allRoutes)
 
 ;
 app.get("/",(req,res) =>
