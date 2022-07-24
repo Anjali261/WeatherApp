@@ -2,12 +2,12 @@ module.exports={
   "development":{
     'web_port':process.env.PORT||3000,
     'weatherAPI':process.env.weatherAPI||" 52efe578bffd9ca4021efd48e8851957",
-    'API_URL':"https://api.openweathermap.org/2.5/forcast?"
+    'API_URL':"https://api.openweathermap.org/2.5/forecast?"
   },
   "production":{
     'web_port':process.env.PORT||80,
     'weatherAPI':process.env.weatherAPI||" 52efe578bffd9ca4021efd48e8851957",
-    'API_URL':"https://api.openweathermap.org/2.5/forcast?"
+    'API_URL':"https://api.openweathermap.org/2.5/forecast?"
   },
   get_active_config:function() {
     var config_profile =process.env.ENV_MODE || 'development';

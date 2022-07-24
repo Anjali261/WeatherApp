@@ -7,7 +7,7 @@ const env_config = require("./backend/config/config")
 port = env_config.get_active_config().web_port;
 app.use(morgan('dev'));
 
-app.use(bodyParser,json({
+app.use(bodyParser.json({
   limit: '50mb',
   parameterLimit: 1000000,
   extended:true
