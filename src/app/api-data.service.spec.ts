@@ -1,73 +1,16 @@
-import { Injectable, isDevMode } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http"
+import { TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ApiDataService {
-  url = "";
+import { ApiDataService } from './api-data.service';
 
-  constructor(private http: HttpClient) {
-    if (isDevMode()) {
-      this.url = "http://localhost:3000";
-    }
-  }
+describe('ApiDataService', () => {
+  let service: ApiDataService;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApiDataService);
+  });
 
-  getDataWithoutToken(route: string){
-    const access =  '*';
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': 'http://localhost:4200',
-      'Access-Control-Allow-Credentials':'true',
-    })
-
-    console.log("getting data without token",route,headers);
-   return this.http.get(this.url + route,{ headers });
-  }
-
-
-    getData(route: any) {
-      let target_url = this.url + '/api' + route
-      console.log(target_url);
-      return this.http.get(target_url);
-      // return this.http.get(this.url + '/api' + route);
-    }
-
-    getDataWithParam(route: any,param: any){
-      return this.http.get(this.url)
-    }
-
-
-    postData(route: string, body: any) {
-      // const token = localStorage.getItem('token');
-      const headers = new HttpHeaders({
-          // token
-      });
-
-      return this.http.post(this.url + '/api' + route, body, {headers});
-      // return this.http.post(this.url + '/api' + route, body);
-
-    }
-
-    putData(route: string, body: any) {
-      // const token = localStorage.getItem('token');
-      const headers = new HttpHeaders({
-        // token
-      });
-      return this.http.put(this.url + '/api' + route, body, { headers });
-      // return this.http.put(this.url + '/api' + route, body);
-    }
-
-    deleteData(route: string) {
-      // const token = localStorage.getItem('token');
-      const headers = new HttpHeaders({
-        // token
-      });
-      return this.http.delete(this.url + '/api' + route, { headers });
-      // return this.http.delete(this.url + '/api' + route);
-
-    }
-
-
-
-}
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
