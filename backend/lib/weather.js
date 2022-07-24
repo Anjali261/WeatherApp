@@ -16,7 +16,9 @@ exports.getWeatherForecast = async (req,res)=>{
     let data = await axios.get(url);
 
     let city_details = data.data.city;
+
     let all_weather_details = data.data.list;
+
 
     let weather_details = [];
 
@@ -37,7 +39,7 @@ exports.getWeatherForecast = async (req,res)=>{
         weather_object.wind_speed = details.wind.speed;
 
         var day = moment.unix(details.dt);
-        day = day.format('ddd MMMM Do YYYY h:mm a').split(" ");
+        day = day.format('ddd MMM Do YYYY h:mm a').split(" ");
 
         weather_object.day = day[0];
         weather_object.month = day[1];
@@ -45,6 +47,7 @@ exports.getWeatherForecast = async (req,res)=>{
         weather_object.year = day[3];
         weather_object.time = day[4];
         weather_object.state = day[5];
+
 
         if(unique_dates.indexOf(weather_object.date) == -1 ){
             console.log(weather_object)
